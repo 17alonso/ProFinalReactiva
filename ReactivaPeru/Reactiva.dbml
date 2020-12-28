@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BDReactivacion" Class="ReactivaDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=LAPTOP-JH8ID4OA\SQLEXPRESS;Initial Catalog=BDReactivacion;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BDReactivacionConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TAdministrador" Member="Administrador">
+    <Type Name="Administrador">
+      <Column Name="IdA" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NombreA" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ApellidoA" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DniA" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="DireccionA" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TelefonoA" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CorreoA" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Usuario_Administrador" Member="Usuario" ThisKey="CorreoA" OtherKey="CorreoU" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TCategoria" Member="Categoria">
+    <Type Name="Categoria">
+      <Column Name="IdC" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NombreC" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdCatPadre" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Association Name="Categoria_Categoria" Member="Categoria1" ThisKey="IdC" OtherKey="IdCatPadre" Type="Categoria" />
+      <Association Name="Categoria_Producto" Member="Producto" ThisKey="IdC" OtherKey="IdC" Type="Producto" />
+      <Association Name="Categoria_Categoria" Member="TCategoria1" ThisKey="IdCatPadre" OtherKey="IdC" Type="Categoria" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TDetalleProducto" Member="DetalleProducto">
+    <Type Name="DetalleProducto">
+      <Column Name="IdDP" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdP" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="StockDP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrecioDP" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="EstadoDP" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Producto_DetalleProducto" Member="Producto" ThisKey="IdP" OtherKey="IdP" Type="Producto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TEmpresa" Member="Empresa">
+    <Type Name="Empresa">
+      <Column Name="IdE" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NombreE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CorreoE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RucE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TelefonoE" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="DescripcionE" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="IdV" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Association Name="Empresa_Producto" Member="Producto" ThisKey="IdE" OtherKey="IdE" Type="Producto" />
+      <Association Name="Vendedor_Empresa" Member="Vendedor" ThisKey="IdV" OtherKey="IdV" Type="Vendedor" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TImagen" Member="Imagen">
+    <Type Name="Imagen">
+      <Column Name="IdI" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdP" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="NombreI" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ExtensionI" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Producto_Imagen" Member="Producto" ThisKey="IdP" OtherKey="IdP" Type="Producto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TProducto" Member="Producto">
+    <Type Name="Producto">
+      <Column Name="IdP" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdE" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="IdC" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="NombreP" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MarcaP" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DescripcionP" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
+      <Association Name="Producto_DetalleProducto" Member="DetalleProducto" ThisKey="IdP" OtherKey="IdP" Type="DetalleProducto" />
+      <Association Name="Producto_Imagen" Member="Imagen" ThisKey="IdP" OtherKey="IdP" Type="Imagen" />
+      <Association Name="Empresa_Producto" Member="Empresa" ThisKey="IdE" OtherKey="IdE" Type="Empresa" IsForeignKey="true" />
+      <Association Name="Categoria_Producto" Member="Categoria" ThisKey="IdC" OtherKey="IdC" Type="Categoria" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TUsuario" Member="Usuario">
+    <Type Name="Usuario">
+      <Column Name="CorreoU" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ContraseniaU" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Usuario_Administrador" Member="Administrador" ThisKey="CorreoU" OtherKey="CorreoA" Type="Administrador" />
+      <Association Name="Usuario_Vendedor" Member="Vendedor" ThisKey="CorreoU" OtherKey="CorreoV" Type="Vendedor" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TVendedor" Member="Vendedor">
+    <Type Name="Vendedor">
+      <Column Name="IdV" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NombreV" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ApellidosV" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TelefonoV" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="DniV" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CorreoV" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Vendedor_Empresa" Member="Empresa" ThisKey="IdV" OtherKey="IdV" Type="Empresa" />
+      <Association Name="Usuario_Vendedor" Member="Usuario" ThisKey="CorreoV" OtherKey="CorreoU" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.spActualizarDatosVendedor" Method="spActualizarDatosVendedor">
+    <Parameter Name="CorreoV" Parameter="correoV" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="NombreV" Parameter="nombreV" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ApellidosV" Parameter="apellidosV" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="TelefonoV" Parameter="telefonoV" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="DniV" Parameter="dniV" Type="System.String" DbType="VarChar(10)" />
+    <ElementType Name="spActualizarDatosVendedorResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(34) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spAgregarImagen" Method="spAgregarImagen">
+    <Parameter Name="IdP" Parameter="idP" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="imagenI" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Parameter Name="NombreI" Parameter="nombreI" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spAgregarImagenResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spAgregarVendedorEmpresa" Method="spAgregarVendedorEmpresa">
+    <Parameter Name="CorreoV" Parameter="correoV" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ContraseniaV" Parameter="contraseniaV" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="NombreV" Parameter="nombreV" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ApellidosV" Parameter="apellidosV" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="TelefonoV" Parameter="telefonoV" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="DniV" Parameter="dniV" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="NombreE" Parameter="nombreE" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CorreoE" Parameter="correoE" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="RucE" Parameter="rucE" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="TelefonoE" Parameter="telefonoE" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="DescripccionE" Parameter="descripccionE" Type="System.String" DbType="VarChar(300)" />
+    <ElementType Name="spAgregarVendedorEmpresaResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spCambiarContraseniaVendedor" Method="spCambiarContraseniaVendedor">
+    <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Contrasena" Parameter="contrasena" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ContrasenaNueva" Parameter="contrasenaNueva" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spCambiarContraseniaVendedorResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spEliminarImagen" Method="spEliminarImagen">
+    <Parameter Name="IdI" Parameter="idI" Type="System.String" DbType="VarChar(5)" />
+    <ElementType Name="spEliminarImagenResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spEliminarProducto" Method="spEliminarProducto">
+    <Parameter Name="IdP" Parameter="idP" Type="System.Int32" DbType="Int" />
+    <ElementType Name="spEliminarProductoResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spListarCategoria" Method="spListarCategoria">
+    <ElementType Name="spListarCategoriaResult">
+      <Column Name="IdC" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreC" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdCatPadre" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spListarEmpresa" Method="spListarEmpresa">
+    <ElementType Name="spListarEmpresaResult">
+      <Column Name="IdE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CorreoE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RucE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TelefonoE" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DescripcionE" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spListarImagen" Method="spListarImagen">
+    <ElementType Name="spListarImagenResult">
+      <Column Name="IdI" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdP" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ImagenI" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="NombreI" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spListarProducto" Method="spListarProducto">
+    <ElementType Name="spListarProductoResult">
+      <Column Name="IdP" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdC" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreP" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ImagenRef" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="MarcaP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DescripcionP" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spLoginVendedor" Method="spLoginVendedor">
+    <Parameter Name="Correo" Parameter="correo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Contrasenia" Parameter="contrasenia" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spLoginVendedorResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spMisImagenes" Method="spMisImagenes">
+    <Parameter Name="usuarioV" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spMisImagenesResult">
+      <Column Name="CImagen" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="imagen" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spListarCatalogo" Method="spListarCatalogo">
+    <ElementType Name="spListarCatalogoResult">
+      <Column Name="IdP" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreP" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MarcaP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DescripcionP" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="ImagenRef" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spActualizarProducto" Method="spActualizarProducto">
+    <Parameter Name="IdP" Parameter="idP" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdC" Parameter="idC" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="NombreP" Parameter="nombreP" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="imagenI" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Parameter Name="MarcaP" Parameter="marcaP" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="StockDP" Parameter="stockDP" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PrecioDP" Parameter="precioDP" Type="System.Single" DbType="Real" />
+    <Parameter Name="DescripcionP" Parameter="descripcionP" Type="System.String" DbType="VarChar(300)" />
+    <ElementType Name="spActualizarProductoResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(34) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spMisProductos" Method="spMisProductos">
+    <Parameter Name="usuarioV" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spMisProductosResult">
+      <Column Name="CProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CCategoria" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Marca" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Stock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Precio" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="imagen" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spAgregarProducto" Method="spAgregarProducto">
+    <Parameter Name="correoV" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="IdC" Parameter="idC" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="NombreP" Parameter="nombreP" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="MarcaP" Parameter="marcaP" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="imagenI" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Parameter Name="DescripcionP" Parameter="descripcionP" Type="System.String" DbType="VarChar(300)" />
+    <Parameter Name="StockDP" Parameter="stockDP" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PrecioDP" Parameter="precioDP" Type="System.Single" DbType="Real" />
+    <ElementType Name="spAgregarProductoResult">
+      <Column Name="CodError" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mensaje" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spListarProductoDetalles" Method="spListarProductoDetalles">
+    <Parameter Name="idP" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spListarProductoDetallesResult">
+      <Column Name="IdP" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreEmpresa" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IdC" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NombreP" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ImagenRef" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="MarcaP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="StockDP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrecioDP" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="DescripcionP" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spListarfotosDeProducto" Method="spListarfotosDeProducto">
+    <Parameter Name="idP" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="spListarfotosDeProductoResult">
+      <Column Name="ImagenI" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="NombreI" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

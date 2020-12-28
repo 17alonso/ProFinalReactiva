@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.5, 8.625" name="Reactiva">
+  <DataContextMoniker Name="/ReactivaDataContext" />
+  <nestedChildShapes>
+    <classShape Id="1866af6b-38ab-40fc-bc99-abd99a90db54" absoluteBounds="3.5, 6.25, 2, 2.1554996744791657">
+      <DataClassMoniker Name="/ReactivaDataContext/Administrador" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1249cbb0-4561-46f5-9c98-99c5c3279fcb" absoluteBounds="3.515, 6.71, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c1e42ba3-fd15-4fa3-89f8-5f87da97dd3e" absoluteBounds="6.25, 0.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/ReactivaDataContext/Categoria" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6e55ff39-6b87-484c-a1ed-489adc0e4838" absoluteBounds="6.265, 1.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="62c92edf-3259-4e40-bf80-ccf3a51f5d75" absoluteBounds="7.5, 6.25, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/ReactivaDataContext/DetalleProducto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="55cb8852-ab9b-46f6-a9ac-063886a37c19" absoluteBounds="7.5150000000000006, 6.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="aa62f3da-2660-4577-afac-86c69ffeafd7" absoluteBounds="6.25, 3.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/ReactivaDataContext/Empresa" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0095b6dd-21cc-44f3-8aa4-6817d88b2663" absoluteBounds="6.265, 3.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1ecd2db6-d4ed-4233-aa9e-b48c69ca5682" absoluteBounds="10.25, 6.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ReactivaDataContext/Imagen" />
+      <nestedChildShapes>
+        <elementListCompartment Id="42e49b36-2434-43ae-9275-bc7e06008226" absoluteBounds="10.265, 6.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d5bb1cbe-ccbc-429b-ab6e-cf6a031fb7b7" absoluteBounds="9, 3.5, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/ReactivaDataContext/Producto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e88d1cbb-0c74-435f-ab9b-68bb01af3acf" absoluteBounds="9.015, 3.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="40b10982-819c-478a-9d90-e6fd6f90bf34" absoluteBounds="0.75, 5.25, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/ReactivaDataContext/Usuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8bf8a90f-4a3f-457f-a730-23dd08230ad7" absoluteBounds="0.765, 5.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e4b56794-48c0-4971-9e87-424aa1f78ea5" absoluteBounds="3.5, 3.5, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/ReactivaDataContext/Vendedor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="61b25e11-1745-4fe5-a31a-585d29c6303d" absoluteBounds="3.515, 3.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 6.44399251302083); (1.75 : 7.42474659375); (3.5 : 7.42474659375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ReactivaDataContext/Usuario/Usuario_Administrador" />
+      <nodes>
+        <classShapeMoniker Id="40b10982-819c-478a-9d90-e6fd6f90bf34" />
+        <classShapeMoniker Id="1866af6b-38ab-40fc-bc99-abd99a90db54" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.94931705603966 : 2.1362939453125); (6.94931705603966 : 2.3862939453125); (7.56500117938702 : 2.3862939453125); (7.56500117938702 : 2.1362939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ReactivaDataContext/Categoria/Categoria_Categoria" />
+      <nodes>
+        <classShapeMoniker Id="c1e42ba3-fd15-4fa3-89f8-5f87da97dd3e" />
+        <classShapeMoniker Id="c1e42ba3-fd15-4fa3-89f8-5f87da97dd3e" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.25 : 5.4631982421875); (9.25 : 6.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ReactivaDataContext/Producto/Producto_DetalleProducto" />
+      <nodes>
+        <classShapeMoniker Id="d5bb1cbe-ccbc-429b-ab6e-cf6a031fb7b7" />
+        <classShapeMoniker Id="62c92edf-3259-4e40-bf80-ccf3a51f5d75" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 4.48159912109375); (6.25 : 4.48159912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ReactivaDataContext/Vendedor/Vendedor_Empresa" />
+      <nodes>
+        <classShapeMoniker Id="e4b56794-48c0-4971-9e87-424aa1f78ea5" />
+        <classShapeMoniker Id="aa62f3da-2660-4577-afac-86c69ffeafd7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.625 : 5.4631982421875); (10.625 : 6.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ReactivaDataContext/Producto/Producto_Imagen" />
+      <nodes>
+        <classShapeMoniker Id="d5bb1cbe-ccbc-429b-ab6e-cf6a031fb7b7" />
+        <classShapeMoniker Id="1ecd2db6-d4ed-4233-aa9e-b48c69ca5682" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 4.48159912109375); (9 : 4.48159912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ReactivaDataContext/Empresa/Empresa_Producto" />
+      <nodes>
+        <classShapeMoniker Id="aa62f3da-2660-4577-afac-86c69ffeafd7" />
+        <classShapeMoniker Id="d5bb1cbe-ccbc-429b-ab6e-cf6a031fb7b7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 1.44314697265625); (10 : 1.44314697265625); (10 : 3.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ReactivaDataContext/Categoria/Categoria_Producto" />
+      <nodes>
+        <classShapeMoniker Id="c1e42ba3-fd15-4fa3-89f8-5f87da97dd3e" />
+        <classShapeMoniker Id="d5bb1cbe-ccbc-429b-ab6e-cf6a031fb7b7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 5.25); (1.75 : 4.3749995); (3.5 : 4.3749995)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ReactivaDataContext/Usuario/Usuario_Vendedor" />
+      <nodes>
+        <classShapeMoniker Id="40b10982-819c-478a-9d90-e6fd6f90bf34" />
+        <classShapeMoniker Id="e4b56794-48c0-4971-9e87-424aa1f78ea5" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
